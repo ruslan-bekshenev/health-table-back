@@ -1,5 +1,8 @@
 import express, { Express } from "express";
-export default class Server {
+import cors from "cors";
+import session from "express-session";
+import passport from 'passport'
+class Server {
   public app: Express;
   public routes: { url: string; controller: any }[];
   constructor() {
@@ -9,6 +12,14 @@ export default class Server {
 
   public configuration() {
     this.app.use(express.json());
+    this.app.use(cors());
+    this.app.use(
+      session({
+        resave: false,
+        saveUninitialized: true,
+        secret: "SECRET",
+      })
+    );
   }
 
   public register() {
@@ -31,3 +42,5 @@ export default class Server {
     });
   }
 }
+
+export default new Server();

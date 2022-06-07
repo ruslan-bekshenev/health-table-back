@@ -1,4 +1,5 @@
 import { DataSource, DataSourceOptions } from "typeorm";
+import { User } from "./users/users.entity";
 
 export default class Database {
   private static _instance: Database;
@@ -21,6 +22,7 @@ export default class Database {
       password: process.env.POSTGRESS_PASSWORD,
       database: process.env.POSTGRESS_DB,
       synchronize: true,
+      entities: [User],
     });
 
     return this._instance;

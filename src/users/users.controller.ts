@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { Repository } from "typeorm";
-import Database from "../database";
+import Database from "../connection/database";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { User } from "./users.entity";
 

@@ -1,7 +1,8 @@
 import express, { Express } from "express";
 import cors from "cors";
 import session from "express-session";
-import passport from 'passport'
+import cookieParser from "cookie-parser";
+import { corsOptions } from "./cors";
 class Server {
   public app: Express;
   public routes: { url: string; controller: any }[];
@@ -12,14 +13,8 @@ class Server {
 
   public configuration() {
     this.app.use(express.json());
-    this.app.use(cors());
-    this.app.use(
-      session({
-        resave: false,
-        saveUninitialized: true,
-        secret: "SECRET",
-      })
-    );
+    this.app.use(cookieParser());
+    this.app.use(cors(corsOptions));
   }
 
   public register() {
@@ -29,8 +24,6 @@ class Server {
   }
 
   public addRoute(url: string, controller: any) {
-    console.log(this.routes);
-
     this.routes.push({ url, controller });
   }
 

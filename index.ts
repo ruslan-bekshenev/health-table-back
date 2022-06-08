@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import Database from "./src/database";
+import Database from "./src/connection/database";
 import server from "./src/server";
 import UsersController from "./src/users/users.controller";
 

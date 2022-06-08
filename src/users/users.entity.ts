@@ -13,4 +13,10 @@ export class User {
 
   @Column()
   password: string;
+
+  @Column({ type: "boolean", default: false })
+  isActivated: boolean;
+
+  @Column()
+  activationLink: string;
 }
